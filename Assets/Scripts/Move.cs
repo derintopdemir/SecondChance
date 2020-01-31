@@ -41,6 +41,8 @@ public class Move : MonoBehaviour
     {
         transform.Translate(direction);
         rb.MoveRotation(transform.rotation * rotation);
-        rb.MovePosition(transform.position + direction * Time.deltaTime);
+        Vector3 targetPos = transform.position + direction * Time.deltaTime;
+        targetPos.y = 0.5f;
+        rb.MovePosition(targetPos);
     }
 }
