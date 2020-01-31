@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class AgentController : MonoBehaviour
 {
-
+    public GameObject player1, player2;
     public NavMeshAgent navMeshAgent;
 
     // Start is called before the first frame update
@@ -17,15 +17,8 @@ public class AgentController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
+        Vector3 target = Vector3.Distance(player1.transform.position, transform.position) >= Vector3.Distance(player2.transform.position, transform.position) ? player2.transform.position : player1.transform.position;
 
-        if(Physics.Raycast(ray, out hit))
-        {
-            if (hit.transform.CompareTag("Terrain"))
-            {
-                navMeshAgent.SetDestination(hit.point);
-            }
-        }
+        navMeshAgent.SetDestination(target);
     }
 }
