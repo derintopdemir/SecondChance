@@ -6,10 +6,11 @@ using System.Collections;
 public class Move : MonoBehaviour
 {
     [SerializeField]
-    float speed = 100;
+    float speed;
     float rotation;
-    public float rotationSpeed = 100.0f;
-    float translationVertical, translationHorizontal;
+    [SerializeField]
+    float rotationSpeed;
+    float translationHorizontal;
     Rigidbody rb;
 
     private void Awake()
@@ -20,8 +21,7 @@ public class Move : MonoBehaviour
     void Update()
     {
         if (this.gameObject.CompareTag("Player1")) {
-             rotation = Input.GetAxis("HorizontalPlayer1") * rotationSpeed;
-             translationVertical = Input.GetAxis("VerticalPlayer1") * speed;
+            MoveAndRotateChar(new Vector3(0, 0, Input.GetAxis("VerticalPlayer1") * speed * Time.deltaTime), Quaternion.Euler(0, Input.GetAxis("HorizontalPlayer1") * rotationSpeed,0));
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 //Ateş et
@@ -29,19 +29,18 @@ public class Move : MonoBehaviour
         }
         else if (this.gameObject.CompareTag("Player2"))
         {
-             rotation = Input.GetAxis("HorizontalPlayer2") * rotationSpeed;
-             translationVertical = Input.GetAxis("VerticalPlayer2") * speed;
+            MoveAndRotateChar(new Vector3(0, 0, Input.GetAxis("VerticalPlayer2") * speed * Time.deltaTime), Quaternion.Euler(0, Input.GetAxis("HorizontalPlayer2") * rotationSpeed, 0));
             if (Input.GetKeyDown(KeyCode.B))
             {
                 //Ateş et
             }
         }
+    }
 
-        translationVertical *= Time.deltaTime;
-        rotation *= Time.deltaTime;
-
-
-        transform.Rotate(0, rotation, 0);
-        rb.velocity = new Vector3(0, 0, translationVertical);
+    void MoveAndRotateChar(Vector3 direction, Quaternion rotation)
+    {
+        transform.Translate(direction);
+        rb.MoveRotation(transform.rotation * rotation);
+        rb.MovePosition(transform.position + direction * Time.deltaTime);
     }
 }
