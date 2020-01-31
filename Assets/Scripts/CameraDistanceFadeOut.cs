@@ -13,5 +13,6 @@ public class CameraDistanceFadeOut : MonoBehaviour
 
         Camera.main.orthographicSize = distance;
         if (Camera.main.orthographicSize <= 5) Camera.main.orthographicSize = 5;
+        if (Camera.main.orthographicSize >= 45) Camera.main.orthographicSize = 45;
     }
 }

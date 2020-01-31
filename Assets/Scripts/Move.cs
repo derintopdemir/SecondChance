@@ -10,7 +10,6 @@ public class Move : MonoBehaviour
     float rotation;
     [SerializeField]
     float rotationSpeed;
-    float translationHorizontal;
     Rigidbody rb;
 
     private void Awake()
@@ -18,29 +17,16 @@ public class Move : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (this.gameObject.CompareTag("Player1")) {
-            MoveAndRotateChar(new Vector3(0, 0, Input.GetAxis("VerticalPlayer1") * speed * Time.deltaTime), Quaternion.Euler(0, Input.GetAxis("HorizontalPlayer1") * rotationSpeed,0));
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                //Ateş et
-            }
+            MoveAndRotateChar(new Vector3(Input.GetAxisRaw("HorizontalPlayer1") * speed * Time.deltaTime, 0, Input.GetAxisRaw("VerticalPlayer1") * speed * Time.deltaTime));
         }
         else if (this.gameObject.CompareTag("Player2"))
         {
-            MoveAndRotateChar(new Vector3(0, 0, Input.GetAxis("VerticalPlayer2") * speed * Time.deltaTime), Quaternion.Euler(0, Input.GetAxis("HorizontalPlayer2") * rotationSpeed, 0));
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                //Ateş et
-            }
+            MoveAndRotateChar(new Vector3(Input.GetAxisRaw("HorizontalPlayer2") * speed * Time.deltaTime, 0, Input.GetAxisRaw("VerticalPlayer2") * speed * Time.deltaTime));
         }
     }
 
-    void MoveAndRotateChar(Vector3 direction, Quaternion rotation)
-    {
-        transform.Translate(direction);
-        rb.MoveRotation(transform.rotation * rotation);
-        rb.MovePosition(transform.position + direction * Time.deltaTime);
-    }
+    void MoveAndRotateChar(Vector3 direction) => rb.MovePosition(transform.position + (direction * Time.fixedDeltaTime));
 }
