@@ -8,7 +8,21 @@ public class PickupItem : MonoBehaviour
     public GameObject interactTextObj;
     public Transform itemPickupLocation;
     public Material placedMaterial, correctMaterial, wrongMaterial;
-    
+
+    private float lastPickupTime;
+
+    public void Update()
+    {
+        if(Input.GetButtonDown("Interact1") && itemPickupLocation.childCount > 0 && Time.time - lastPickupTime >= 0.5f)
+        {
+            lastPickupTime = Time.time;
+            itemPickupLocation.GetChild(0).transform.localScale *= (1 / 0.4f);
+            itemPickupLocation.GetChild(0).gameObject.GetComponent<Rigidbody>().useGravity = true;
+            itemPickupLocation.GetChild(0).gameObject.GetComponent<BoxCollider>().enabled = true;
+            itemPickupLocation.GetChild(0).transform.parent = null;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Interactable") && itemPickupLocation.childCount == 0)
@@ -43,11 +57,13 @@ public class PickupItem : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Interactable") && Input.GetAxis("Interact1") > 0 && itemPickupLocation.childCount == 0)
+        if (other.CompareTag("Interactable") && Input.GetAxis("Interact1") > 0 && itemPickupLocation.childCount == 0 && Time.time - lastPickupTime >= 0.5f)
         {
+            lastPickupTime = Time.time;
             other.gameObject.transform.parent = itemPickupLocation.transform;
             other.gameObject.transform.position = itemPickupLocation.position;
             other.gameObject.transform.localScale *= 0.4f;
+            other.gameObject.GetComponent<Rigidbody>().useGravity = false;
             other.gameObject.GetComponent<BoxCollider>().enabled = false;
             interactTextObj.SetActive(false);
         }
