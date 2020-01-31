@@ -12,6 +12,7 @@ public class CameraDistanceFadeOut : MonoBehaviour
     {
         var distance = Vector3.Distance(object1.transform.position, object2.transform.position);
 
-        Camera.main.orthographicSize = distance ;
+        Camera.main.orthographicSize = distance;
+        if (Camera.main.orthographicSize <= 5) Camera.main.orthographicSize = 5;
     }
 }

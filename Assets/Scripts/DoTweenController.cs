@@ -6,10 +6,9 @@ using DG.Tweening;
 public struct DoTweenController
 {
 
-
-    public void DoAnimate(GameObject gameObject, Vector3 endValue, float duration)
+    public static void DoMoveAnimate(GameObject gameObject, Vector3 endValue, float duration, Ease ease)
     {
-        gameObject.transform.DOMove(endValue, duration, false);
+        gameObject.transform.DOLocalMove(endValue, duration, false).SetEase(ease).SetLoops(-1);
     }
 
 
