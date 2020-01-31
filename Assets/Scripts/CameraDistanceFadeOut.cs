@@ -12,9 +12,6 @@ public class CameraDistanceFadeOut : MonoBehaviour
     {
         var distance = Vector3.Distance(object1.transform.position, object2.transform.position);
 
-        if(distance >  10)
-        {
-            Camera.main.fieldOfView = 70;
-        } else if (distance > 15)
+        Camera.main.orthographicSize = distance ;
     }
 }
