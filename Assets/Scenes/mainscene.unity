@@ -409,7 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cd651e9331fd34186708d726b64d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombiePrefab: {fileID: 6820534046222432295, guid: 3bfb59faaf4dbb144a5f5e7d130dbc61,
+  zombiePrefab: {fileID: 6820534046222432295, guid: b0cf5b4346f740d48adf5ff91d229b5c,
     type: 3}
 --- !u!1 &230761450
 GameObject:
@@ -778,7 +778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cd651e9331fd34186708d726b64d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombiePrefab: {fileID: 6820534046222432295, guid: 3bfb59faaf4dbb144a5f5e7d130dbc61,
+  zombiePrefab: {fileID: 6820534046222432295, guid: b0cf5b4346f740d48adf5ff91d229b5c,
     type: 3}
 --- !u!1 &436220766
 GameObject:
@@ -1028,7 +1028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cd651e9331fd34186708d726b64d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombiePrefab: {fileID: 6820534046222432295, guid: 3bfb59faaf4dbb144a5f5e7d130dbc61,
+  zombiePrefab: {fileID: 6820534046222432295, guid: b0cf5b4346f740d48adf5ff91d229b5c,
     type: 3}
 --- !u!1 &551065354
 GameObject:
@@ -1428,7 +1428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cd651e9331fd34186708d726b64d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombiePrefab: {fileID: 6820534046222432295, guid: 3bfb59faaf4dbb144a5f5e7d130dbc61,
+  zombiePrefab: {fileID: 6820534046222432295, guid: b0cf5b4346f740d48adf5ff91d229b5c,
     type: 3}
 --- !u!1 &876210361
 GameObject:
