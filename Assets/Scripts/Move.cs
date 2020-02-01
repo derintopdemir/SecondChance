@@ -11,6 +11,7 @@ public class Move : MonoBehaviour
     [SerializeField]
     float rotationSpeed;
     Rigidbody rb;
+    bool trigger;
 
     private void Awake()
     {
@@ -25,8 +26,23 @@ public class Move : MonoBehaviour
         else if (this.gameObject.CompareTag("Player2"))
         {
             MoveAndRotateChar(new Vector3(Input.GetAxisRaw("HorizontalPlayer2") * speed * Time.deltaTime, 0, Input.GetAxisRaw("VerticalPlayer2") * speed * Time.deltaTime));
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                trigger = true;
+                AnimTrigger();
+            }
+            else if(Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow)) { trigger = false;
+                AnimTrigger();
+            }
         }
     }
 
-    void MoveAndRotateChar(Vector3 direction) => rb.MovePosition(transform.position + (direction * Time.fixedDeltaTime));
+    void MoveAndRotateChar(Vector3 direction)
+    {
+        rb.MovePosition(transform.position + (direction * Time.fixedDeltaTime));
+    }
+    void AnimTrigger()
+    {
+        FindObjectOfType<AudioManager>().Walk(trigger);
+    }
 }
