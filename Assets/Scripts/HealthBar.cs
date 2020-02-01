@@ -11,7 +11,6 @@ public class HealthBar : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             activeOnes.Push(transform.GetChild(i).gameObject);
-            Debug.Log("Girdim amk");
         }
     }
 

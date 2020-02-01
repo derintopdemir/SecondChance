@@ -6,6 +6,7 @@ public class CameraDistanceFadeOut : MonoBehaviour
 {
     [SerializeField]
     GameObject object1, object2;
+    Transform distance;
 
     void Update()
     {
@@ -14,6 +15,7 @@ public class CameraDistanceFadeOut : MonoBehaviour
         Camera.main.orthographicSize = distance;
         if (Camera.main.orthographicSize <= 5) Camera.main.orthographicSize = 5;
         if (Camera.main.orthographicSize >= 45) Camera.main.orthographicSize = 45;
-        transform.position = transform.forward * -1 * Camera.main.orthographicSize;
+        
+        transform.position = transform.parent.position + new Vector3(-2, 6, -3) + transform.forward * -1 * Camera.main.orthographicSize;
     }
 }
