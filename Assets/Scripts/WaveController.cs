@@ -2,14 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaveController : MonoBehaviour
 {
     private static WaveController singleton;
     public static WaveController Singleton { get { if (singleton == null) singleton = new WaveController(); return singleton; } }
 
+    public Text waveTimerText;
+    public GameObject waveTimerPanel;
+
     [Serializable]
-    private struct WaveInfo
+    public struct WaveInfo
     {
         public int minSpawnInterval;
         public int maxSpawnInterval;
@@ -18,14 +22,14 @@ public class WaveController : MonoBehaviour
     }
 
     [SerializeField]
-    private List<WaveInfo> waves;
+    public List<WaveInfo> waves;
 
     private int currentWave = 0, currentZombies = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        singleton = this;
     }
 
     // Update is called once per frame
@@ -36,6 +40,7 @@ public class WaveController : MonoBehaviour
 
     public int GetMinInterval()
     {
+        Debug.Log(waves[0].DownTime);
         if(waves.Count > currentWave)
         {
             return waves[currentWave].minSpawnInterval;
@@ -63,17 +68,28 @@ public class WaveController : MonoBehaviour
 
     public bool CanZombieSpawn()
     {
-        if(waves.Count > currentWave && currentZombies < waves[currentZombies].zombieCount)
+        if(waves.Count > currentWave && currentZombies < waves[currentWave].zombieCount)
         {
             currentZombies += 1;
             return true;
+        }
+        else
+        {
+            if(!waveTimerPanel.activeSelf)
+                StartCoroutine("WaveSwitch");
         }
         return false;
     }
 
     public IEnumerator WaveSwitch()
     {
-        yield return new WaitForSeconds(waves[currentWave].DownTime);
+        waveTimerPanel.SetActive(true);
+        for (int i = waves[currentWave].DownTime; i >= 0; i--)
+        {
+            waveTimerText.text = i.ToString();
+            yield return new WaitForSeconds(1);
+        }
         currentWave += 1;
+        waveTimerPanel.SetActive(false);
     }
 }
