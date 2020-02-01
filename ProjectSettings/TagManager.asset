@@ -9,6 +9,7 @@ TagManager:
   - Interactable
   - Wreck
   - FillPart
+  - Binalar
   layers:
   - Default
   - TransparentFX
