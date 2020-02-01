@@ -54,6 +54,16 @@ public class Move : MonoBehaviour
                 animator.SetBool("isRunning", false);
             }
 
+            if (Input.GetKey(KeyCode.F))
+            {
+                animator.SetBool("isShooting", true);
+            }
+            else if (Input.GetKey(KeyCode.G)) 
+            {
+                animator.SetBool("isShooting", false);
+            }
+            
+
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 trigger = true;
