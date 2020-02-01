@@ -23,7 +23,6 @@ public class GroundPlacementController : MonoBehaviour
     private void Start()
     {
         cam.enabled = false;
-        placeableObjectLabel = GameObject.FindGameObjectWithTag("PlaceableObjectLabel").GetComponent<TextMesh>();
     }
 
     void Update()

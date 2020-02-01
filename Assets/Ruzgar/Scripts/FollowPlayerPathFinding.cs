@@ -28,7 +28,7 @@ public class FollowPlayerPathFinding : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player2")
         {
             target = other.gameObject;
             agent.isStopped = false;
@@ -38,7 +38,7 @@ public class FollowPlayerPathFinding : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player2")
         {
             isFollow = false;
             agent.isStopped = true;
