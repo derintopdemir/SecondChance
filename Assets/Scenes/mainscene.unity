@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1838,6 +1838,7 @@ GameObject:
   - component: {fileID: 1199921619}
   - component: {fileID: 1199921620}
   - component: {fileID: 1199921621}
+  - component: {fileID: 1199921622}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2003,6 +2004,18 @@ MonoBehaviour:
     maxSpawnInterval: 10
     zombieCount: 1000
     DownTime: 4
+--- !u!114 &1199921622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199921614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93b758161d9dbe74aa38dd03b0359747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1248947674
 GameObject:
   m_ObjectHideFlags: 0
@@ -3167,6 +3180,7 @@ GameObject:
   - component: {fileID: 1998285826}
   - component: {fileID: 1998285825}
   - component: {fileID: 1998285829}
+  - component: {fileID: 1998285831}
   - component: {fileID: 1998285830}
   m_Layer: 0
   m_Name: Cube (7)
@@ -3273,11 +3287,25 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998285824}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1998285831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998285824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee1742332f440d4b8dbb017fdd8c839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingInfo: {fileID: 11400000, guid: 5fe68d5f567913a45b840994fa6885a1, type: 2}
+  health: 0
 --- !u!1 &2008383338
 GameObject:
   m_ObjectHideFlags: 0

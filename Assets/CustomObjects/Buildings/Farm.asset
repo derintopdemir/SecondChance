@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: Farm
   m_EditorClassIdentifier: 
   buildingType: 0
-  buildingHealth: 0
-  contribution: 0
-  mesh: {fileID: 0}
-  neededMaterials: []
+  producing: 2
+  buildingHealth: 5
+  contribution: 5
+  interval: 5
+  mesh: {fileID: 4300002, guid: f36c148914c8e05498dad1ca7becaa2e, type: 3}
+  neededMaterials:
+  - type: 1
+    quantity: 3

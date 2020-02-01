@@ -40,7 +40,6 @@ public class WaveController : MonoBehaviour
 
     public int GetMinInterval()
     {
-        Debug.Log(waves[0].DownTime);
         if(waves.Count > currentWave)
         {
             return waves[currentWave].minSpawnInterval;
@@ -75,7 +74,7 @@ public class WaveController : MonoBehaviour
         }
         else
         {
-            if(!waveTimerPanel.activeSelf)
+            if(!waveTimerPanel.activeSelf && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
                 StartCoroutine("WaveSwitch");
         }
         return false;

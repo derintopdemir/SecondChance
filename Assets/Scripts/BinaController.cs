@@ -6,6 +6,7 @@ public class BinaController : MonoBehaviour
 {
     public Buildings buildingInfo;
 
+    [SerializeField]
     private int health;
 
     // Start is called before the first frame update
@@ -29,26 +30,31 @@ public class BinaController : MonoBehaviour
         StartCoroutine(UpdateResources());
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            StartCoroutine(GetDamage(collision.gameObject));
+            StartCoroutine(GetDamage(other.gameObject));
         }
     }
 
+    private bool canGetDamage = true;
+
     public IEnumerator GetDamage(GameObject attacker)
     {
-        GetComponent<Rigidbody>().Sleep();
-        health -= attacker.GetComponent<AgentController>().enemyInfo.damage;
-        if(health <= 0)
+        if (canGetDamage)
         {
-            Destroy(gameObject);
-        }
-        else
-        {
-            yield return new WaitForSeconds(2);
-            GetComponent<Rigidbody>().WakeUp();
+            canGetDamage = false;
+            health -= attacker.GetComponent<AgentController>().enemyInfo.damage;
+            if(health <= 0)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                yield return new WaitForSeconds(2);
+                canGetDamage = true;
+            }
         }
     }
 }
