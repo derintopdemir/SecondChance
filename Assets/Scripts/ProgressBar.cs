@@ -3,25 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[ExecuteInEditMode()]
 public class ProgressBar : MonoBehaviour
 {
+    private Slider slider;
+    private float targetProgress = 0;
+    public float emptySpeed;
+    public bool hungryObjectHit;
     [SerializeField]
-    int minimum, current;
-    [SerializeField]
-    Image mask, fill;
-    [SerializeField]
-    Color color;
+    int playerNumber;
+
+
+    private void Awake()
+    {
+        slider = gameObject.GetComponent<Slider>();
+    }
 
     private void Update()
     {
-        GetCurrentFill();
+        if (!hungryObjectHit)
+        {
+            if (slider.value > targetProgress)
+                slider.value -= emptySpeed * Time.deltaTime;
+        } else if (hungryObjectHit)
+        {
+            slider.value = 1;
+        }
+        if(slider.value <= 0)
+        {
+            FindObjectOfType<UıManager>().DecreaseHealth(2, playerNumber);
+        }
     }
 
-    void GetCurrentFill()
+    public void DecreaseProgress(float newProgress)
     {
-        float fillAmount = (float)current / (float)minimum;
-        mask.fillAmount = fillAmount;
-        fill.color = color;
+        targetProgress = slider.value -= newProgress;
     }
 }

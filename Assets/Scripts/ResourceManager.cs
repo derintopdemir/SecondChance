@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ResourceManager : MonoBehaviour
 {
@@ -11,11 +12,19 @@ public class ResourceManager : MonoBehaviour
 
     private Dictionary<Type, int> resources;
 
+    public TMPro.TextMeshProUGUI O2, Water, Food, Energy, Mineral;
+
     // Start is called before the first frame update
     void Start()
     {
         singleton = this;
         resources = new Dictionary<Type, int>();
+        resources[Type.O2] = 0;
+        resources[Type.Water] = 0;
+        resources[Type.Food] = 0;
+        resources[Type.Energy] = 0;
+        resources[Type.Mineral] = 0;
+        UpdateUI();
     }
 
     // Update is called once per frame
@@ -28,6 +37,7 @@ public class ResourceManager : MonoBehaviour
     {
         if (!resources.ContainsKey(type)) resources[type] = amount;
         resources[type] += amount;
+        UpdateUI();
     }
 
     public bool CheckResource(Type type, int amount)
@@ -49,6 +59,18 @@ public class ResourceManager : MonoBehaviour
     public void UseResource(Type type, int amount)
     {
         if (resources.ContainsKey(type))
+        {
             resources[type] -= amount;
+            UpdateUI();
+        }
+    }
+
+    public void UpdateUI()
+    {
+        O2.text = resources[Type.O2].ToString();
+        Water.text = resources[Type.Water].ToString();
+        Food.text = resources[Type.Food].ToString();
+        Energy.text = resources[Type.Energy].ToString();
+        Mineral.text = resources[Type.Mineral].ToString();
     }
 }

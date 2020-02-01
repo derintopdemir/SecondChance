@@ -44,10 +44,6 @@ public class Fire : MonoBehaviour
                 triggerDelay = .45f;
             }
         }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            FindObjectOfType<UıManager>().DecreaseHealth(1);
-        }
         Reset();
     }
 
