@@ -7,22 +7,9 @@ public class UıManager : MonoBehaviour
 {
     
     float timeScaleOld;
-    [SerializeField]
-    float triggerİçDelay;
-    float triggerDelay;
-    public bool triggerTetikle;
+
 
     public HealthBar barPlayer1, barPlayer2;
-    private void Awake()
-    {
-        triggerDelay = triggerİçDelay;
-    }
-
-    private void Update()
-    {
-        if (!triggerTetikle) Reset();
-        else if(triggerTetikle) { triggerDelay = triggerİçDelay; }
-    }
 
     public void Play()
     {
@@ -85,16 +72,6 @@ public class UıManager : MonoBehaviour
         else
         {
             barPlayer2.IncreaseHealth();
-        }
-    }
-
-    private void Reset()
-    {
-        triggerDelay -= Time.deltaTime;
-        if (triggerDelay <= 0)
-        {
-            DecreaseHealth(2, 1);
-            DecreaseHealth(2, 2);
         }
     }
 }

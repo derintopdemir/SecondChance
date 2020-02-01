@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[ExecuteInEditMode()]
 public class ProgressBar : MonoBehaviour
 {
     private Slider slider;
     private float targetProgress = 0;
-    public float fillSpeed = 0.5f;
+    public float emptySpeed;
+    public bool hungryObjectHit;
+    [SerializeField]
+    int playerNumber;
 
 
     private void Awake()
@@ -18,8 +20,18 @@ public class ProgressBar : MonoBehaviour
 
     private void Update()
     {
-        if (slider.value > targetProgress)
-            slider.value -= fillSpeed * Time.deltaTime;
+        if (!hungryObjectHit)
+        {
+            if (slider.value > targetProgress)
+                slider.value -= emptySpeed * Time.deltaTime;
+        } else if (hungryObjectHit)
+        {
+            slider.value = 1;
+        }
+        if(slider.value <= 0)
+        {
+            FindObjectOfType<UıManager>().DecreaseHealth(2, playerNumber);
+        }
     }
 
     public void DecreaseProgress(float newProgress)
