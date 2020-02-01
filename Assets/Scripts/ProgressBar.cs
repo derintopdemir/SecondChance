@@ -6,22 +6,24 @@ using UnityEngine.UI;
 [ExecuteInEditMode()]
 public class ProgressBar : MonoBehaviour
 {
-    [SerializeField]
-    int minimum, current;
-    [SerializeField]
-    Image mask, fill;
-    [SerializeField]
-    Color color;
+    private Slider slider;
+    private float targetProgress = 0;
+    public float fillSpeed = 0.5f;
+
+
+    private void Awake()
+    {
+        slider = gameObject.GetComponent<Slider>();
+    }
 
     private void Update()
     {
-        GetCurrentFill();
+        if (slider.value > targetProgress)
+            slider.value -= fillSpeed * Time.deltaTime;
     }
 
-    void GetCurrentFill()
+    public void DecreaseProgress(float newProgress)
     {
-        float fillAmount = (float)current / (float)minimum;
-        mask.fillAmount = fillAmount;
-        fill.color = color;
+        targetProgress = slider.value -= newProgress;
     }
 }
