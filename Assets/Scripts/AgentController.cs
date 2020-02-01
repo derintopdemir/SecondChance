@@ -11,7 +11,8 @@ public class AgentController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        player1 = GameObject.FindGameObjectWithTag("Player1");
+        player2 = GameObject.FindGameObjectWithTag("Player2");
     }
 
     // Update is called once per frame
