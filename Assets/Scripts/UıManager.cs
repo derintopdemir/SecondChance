@@ -49,6 +49,7 @@ public class UıManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
     public void DecreaseHealth(int healthAzaltmaŞartı, int player)
     {
         if(healthAzaltmaŞartı == 1)
@@ -74,6 +75,7 @@ public class UıManager : MonoBehaviour
             }
         }
     }
+
     public void IncreaseHealth(int player)
     {
         if (player == 1)

@@ -33,9 +33,13 @@ public class AgentController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Player1") || collision.gameObject.CompareTag("Player2"))
+        if (collision.gameObject.CompareTag("Player1"))
         {
-            FindObjectOfType<UıManager>().DecreaseHealth(1);
+            FindObjectOfType<UıManager>().DecreaseHealth(1, 1);
+        }
+        else if (collision.gameObject.CompareTag("Player2"))
+        {
+            FindObjectOfType<UıManager>().DecreaseHealth(1, 2);
         }
     }
 
