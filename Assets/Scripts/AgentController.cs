@@ -9,12 +9,15 @@ public class AgentController : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public Enemies enemyInfo;
 
+    private int health;
     Vector3 target;
     GameObject targetObj;
 
     // Start is called before the first frame update
     void Start()
     {
+        health = enemyInfo.health;
+
         player1 = GameObject.FindGameObjectWithTag("Player1");
         player2 = GameObject.FindGameObjectWithTag("Player2");
 
@@ -42,6 +45,15 @@ public class AgentController : MonoBehaviour
         if(other.CompareTag("Player1") || other.CompareTag("Player2") || other.CompareTag("Binalar"))
         {
             targetObj = null;
+        }
+    }
+
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+        if(health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }
