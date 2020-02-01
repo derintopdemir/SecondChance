@@ -21,16 +21,18 @@ public class ResourceManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void AddResource(Type type, int amount)
     {
+        if (!resources.ContainsKey(type)) resources[type] = amount;
         resources[type] += amount;
     }
 
     public bool CheckResource(Type type, int amount)
     {
+        if (!resources.ContainsKey(type)) return false;
         return resources[type] >= amount;
     }
 
@@ -38,7 +40,7 @@ public class ResourceManager : MonoBehaviour
     {
         foreach (var item in material)
         {
-            if (resources[item.type] <= item.quantity)
+            if (!resources.ContainsKey(item.type) || resources[item.type] <= item.quantity)
                 return false;
         }
         return true;
@@ -46,6 +48,7 @@ public class ResourceManager : MonoBehaviour
 
     public void UseResource(Type type, int amount)
     {
-        resources[type] -= amount;
+        if (resources.ContainsKey(type))
+            resources[type] -= amount;
     }
 }

@@ -10,6 +10,7 @@ TagManager:
   - Wreck
   - FillPart
   - Binalar
+  - Enemy
   layers:
   - Default
   - TransparentFX
