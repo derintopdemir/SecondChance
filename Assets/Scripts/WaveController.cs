@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class WaveController : MonoBehaviour
 {
     private static WaveController singleton;
-    public static WaveController Singleton { get { if (singleton == null) singleton = new WaveController(); return singleton; } }
+    public static WaveController Singleton { get { if (singleton == null) singleton = FindObjectOfType<WaveController>(); return singleton; } }
 
     public Text waveTimerText;
     public GameObject waveTimerPanel;

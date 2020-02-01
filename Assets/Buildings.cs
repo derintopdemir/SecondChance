@@ -9,17 +9,17 @@ public class Buildings : ScriptableObject
     public enum BuildingType { Farm, Mine, Capacitor, O2Generator, Pump }
     
     public BuildingType buildingType;
+    public ResourceManager.Type producing;
     public int buildingHealth;
     public int contribution;
+    public int interval;
     public Mesh mesh;
 
     [Serializable]
     public struct Material
     {
         [SerializeField]
-        public enum Type { O2, Water, Food, Energy, Mıneral }
-        [SerializeField]
-        public Type type;
+        public ResourceManager.Type type;
         [SerializeField]
         public int quantity;
     }

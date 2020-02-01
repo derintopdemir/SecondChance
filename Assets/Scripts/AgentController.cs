@@ -7,6 +7,7 @@ public class AgentController : MonoBehaviour
 {
     public GameObject player1, player2;
     public NavMeshAgent navMeshAgent;
+    public Enemies enemyInfo;
 
     Vector3 target;
     GameObject targetObj;
@@ -24,6 +25,7 @@ public class AgentController : MonoBehaviour
     void Update()
     {
         navMeshAgent.SetDestination(target);
+        navMeshAgent.speed = enemyInfo.speed;
     }
 
     private void OnTriggerEnter(Collider other)
