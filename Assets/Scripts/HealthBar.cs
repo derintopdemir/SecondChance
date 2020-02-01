@@ -1,23 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    public Stack<GameObject> activeOnes = new Stack<GameObject>(), deactiveOnes = new Stack<GameObject>();
-    GameObject bok;
+    public Sprite emptyBar, greenBar, orangeBar, redBar, yellowBar;
+    public Stack<Image> activeOnes = new Stack<Image>(), deactiveOnes = new Stack<Image>();
+    Image bok;
+
     private void Awake()
     {
         for (int i = 0; i < transform.childCount; i++)
         {
-            activeOnes.Push(transform.GetChild(i).gameObject);
+            activeOnes.Push(transform.GetChild(i).GetComponent<Image>());
         }
     }
 
     public void DecreaseHealth()
     {
         bok = activeOnes.Pop();
-        bok.SetActive(false);
+
+        bok.sprite = emptyBar;
+
         deactiveOnes.Push(bok);
 
         if(activeOnes.Count <= 0)
@@ -28,7 +33,24 @@ public class HealthBar : MonoBehaviour
     public void IncreaseHealth()
     {
         bok = deactiveOnes.Pop();
-        bok.SetActive(true);
+
+        if (0 <= activeOnes.Count && activeOnes.Count < 2)
+        {
+            bok.sprite = redBar;
+        }
+        else if (activeOnes.Count < 4)
+        {
+            bok.sprite = orangeBar;
+        }
+        else if (activeOnes.Count < 7)
+        {
+            bok.sprite = yellowBar;
+        }
+        else
+        {
+            bok.sprite = greenBar;
+        }
+
         activeOnes.Push(bok);
     }
 }
