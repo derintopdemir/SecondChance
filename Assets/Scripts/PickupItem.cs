@@ -7,17 +7,20 @@ public class PickupItem : MonoBehaviour
 {
     public GameObject interactTextObj;
     public Transform itemPickupLocation;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Material placedMaterial, correctMaterial, wrongMaterial;
 
-    // Update is called once per frame
-    void Update()
+    private float lastPickupTime;
+
+    public void Update()
     {
-        
+        if(Input.GetButtonDown("Interact1") && itemPickupLocation.childCount > 0 && Time.time - lastPickupTime >= 0.5f)
+        {
+            lastPickupTime = Time.time;
+            itemPickupLocation.GetChild(0).transform.localScale *= (1 / 0.4f);
+            itemPickupLocation.GetChild(0).gameObject.GetComponent<Rigidbody>().useGravity = true;
+            itemPickupLocation.GetChild(0).gameObject.GetComponent<BoxCollider>().enabled = true;
+            itemPickupLocation.GetChild(0).transform.parent = null;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,17 +35,44 @@ public class PickupItem : MonoBehaviour
             interactTextObj.SetActive(true);
             interactTextObj.GetComponent<Text>().text = "You Cannot Carry More Item";
         }
+
+        if (other.CompareTag("FillPart"))
+        {
+            if(itemPickupLocation.childCount > 0 && other.GetComponent<PartInfo>().objId == itemPickupLocation.GetChild(0).GetComponent<PartInfo>().objId)
+            {
+                interactTextObj.SetActive(true);
+                interactTextObj.GetComponent<Text>().text = "E to Place";
+                other.gameObject.GetComponent<MeshRenderer>().enabled = true;
+                other.gameObject.GetComponent<MeshRenderer>().material = correctMaterial;
+            }
+            else
+            {
+                interactTextObj.SetActive(true);
+                interactTextObj.GetComponent<Text>().text = "No Proper Item";
+                other.gameObject.GetComponent<MeshRenderer>().enabled = true;
+                other.gameObject.GetComponent<MeshRenderer>().material = wrongMaterial;
+            }
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Interactable") && Input.GetAxis("Interact1") > 0 && itemPickupLocation.childCount == 0)
+        if (other.CompareTag("Interactable") && Input.GetAxis("Interact1") > 0 && itemPickupLocation.childCount == 0 && Time.time - lastPickupTime >= 0.5f)
         {
+            lastPickupTime = Time.time;
             other.gameObject.transform.parent = itemPickupLocation.transform;
             other.gameObject.transform.position = itemPickupLocation.position;
             other.gameObject.transform.localScale *= 0.4f;
+            other.gameObject.GetComponent<Rigidbody>().useGravity = false;
             other.gameObject.GetComponent<BoxCollider>().enabled = false;
             interactTextObj.SetActive(false);
+        }
+        else if (other.CompareTag("FillPart") && Input.GetAxis("Interact1") > 0 && itemPickupLocation.childCount > 0 && other.GetComponent<PartInfo>().objId == itemPickupLocation.GetChild(0).GetComponent<PartInfo>().objId)
+        {
+            other.gameObject.GetComponent<MeshRenderer>().material = placedMaterial;
+            Destroy(itemPickupLocation.GetChild(0).gameObject);
+            interactTextObj.SetActive(false);
+            other.gameObject.tag = "Untagged";
         }
     }
 
@@ -51,6 +81,11 @@ public class PickupItem : MonoBehaviour
         if (other.CompareTag("Interactable"))
         {
             interactTextObj.SetActive(false);
+        }
+        else if (other.CompareTag("FillPart"))
+        {
+            interactTextObj.SetActive(false);
+            other.gameObject.GetComponent<MeshRenderer>().enabled = false;
         }
     }
 }
