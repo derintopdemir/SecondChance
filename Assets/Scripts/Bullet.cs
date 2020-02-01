@@ -7,7 +7,14 @@ public class Bullet : MonoBehaviour
 
     private void OnEnable()
     {
-        GetComponent<Rigidbody>().AddForce(Vector3.forward * 4000,ForceMode.Force);
+        GetComponent<Rigidbody>().WakeUp();
+        GetComponent<Rigidbody>().isKinematic = false;
+        GetComponent<Rigidbody>().AddForce(Vector3.forward * 4000, ForceMode.Force);
     }
-
+    private void OnDisable()
+    {
+        Debug.Log("Girdim amk");
+        GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<Rigidbody>().Sleep();
+    }
 }
