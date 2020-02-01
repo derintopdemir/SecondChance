@@ -8,7 +8,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] float jumpSpeed = 4.29f;
     public float gravity = -9.81f;
     
-    private CharacterController controller;
+    [SerializeField] private CharacterController controller;
 
     //HEALTH SECTION
     [SerializeField] TextMesh healthBar;
@@ -17,11 +17,6 @@ public class CharacterMovement : MonoBehaviour
     public bool isAttack = false;
     
     [SerializeField] private Animator animator;
-   
-
-    [SerializeField] Transform groundCheck;
-    public float groundDistance = 0.2f;
-    public LayerMask groundMask;
 
     Vector3 movement;
     Vector3 velocity;
@@ -31,29 +26,26 @@ public class CharacterMovement : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
-        groundCheck = transform.Find("GroundCheckForPlayer").transform;
 
-        animator = GameObject.Find("ToonSoldier_demo").GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        movement.x = Input.GetAxis("Horizontal");
-        movement.z = Input.GetAxis("Vertical");
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.z = Input.GetAxisRaw("Vertical");
+
+        print(movement.magnitude);
     }
 
     private void FixedUpdate()
     {
-        CheckIfGrounded();
+
         SetDirections();
         Movement();
         ApplyAnimations();
     }
 
-    void CheckIfGrounded()
-    {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-    }
 
     void SetDirections()
     {
@@ -70,6 +62,8 @@ public class CharacterMovement : MonoBehaviour
 
         controller.Move(movement * speed * Time.fixedDeltaTime);
         controller.Move(velocity * Time.deltaTime);
+
+        print("moving");
 
         if (isGrounded && velocity.y < 0) velocity.y = -2f;
 

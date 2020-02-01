@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3922532164694507659}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14, y: 0.854, z: 14}
+  m_LocalPosition: {x: 14, y: 0.5, z: 14}
   m_LocalScale: {x: 1.5, y: 0.2, z: 1.5}
   m_Children:
   - {fileID: 6249344056830074348}
@@ -131,7 +131,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 2e5cf738b0082dd4fafb63b52ca4afb1, type: 2}
   m_Renderer: {fileID: 0}
   groundCheck: {fileID: 6249344056830074348}
-  groundDistance: 0.3
+  groundDistance: 0.5
   groundMask:
     serializedVersion: 2
     m_Bits: 256
@@ -194,7 +194,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4617243616323252168}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.11, z: 0}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5797133742816416319}

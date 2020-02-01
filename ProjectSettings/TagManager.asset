@@ -11,6 +11,9 @@ TagManager:
   - FillPart
   - Binalar
   - Enemy
+  - Obstacle
+  - Ground
+  - Zombie
   layers:
   - Default
   - TransparentFX
@@ -20,7 +23,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Ground
   - 
   - 
   - 

@@ -13,19 +13,57 @@ public class Move : MonoBehaviour
     Rigidbody rb;
     bool trigger;
 
+    Vector3 movement;
+    Vector3 move;
+
+    [SerializeField] Animator animator;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
+        animator = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.z = Input.GetAxisRaw("Vertical");
+
     }
 
     void FixedUpdate()
     {
+
         if (this.gameObject.CompareTag("Player1")) {
             MoveAndRotateChar(new Vector3(Input.GetAxisRaw("HorizontalPlayer1") * speed * Time.deltaTime, 0, Input.GetAxisRaw("VerticalPlayer1") * speed * Time.deltaTime));
+
         }
         else if (this.gameObject.CompareTag("Player2"))
         {
-            MoveAndRotateChar(new Vector3(Input.GetAxisRaw("HorizontalPlayer2") * speed * Time.deltaTime, 0, Input.GetAxisRaw("VerticalPlayer2") * speed * Time.deltaTime));
+
+            move = new Vector3(Input.GetAxisRaw("HorizontalPlayer2") * speed * Time.deltaTime, 0, Input.GetAxisRaw("VerticalPlayer2") * speed * Time.deltaTime);
+            MoveAndRotateChar(move);
+
+            if (move.magnitude > 0.10f)
+            {
+                animator.SetBool("isRunning", true);
+            }
+            else
+            {
+                animator.SetBool("isRunning", false);
+            }
+
+            if (Input.GetKey(KeyCode.F))
+            {
+                animator.SetBool("isShooting", true);
+            }
+            else if (Input.GetKey(KeyCode.G)) 
+            {
+                animator.SetBool("isShooting", false);
+            }
+            
+
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 trigger = true;
@@ -35,6 +73,14 @@ public class Move : MonoBehaviour
                 AnimTrigger();
             }
         }
+
+        if (new Vector3(Input.GetAxisRaw("HorizontalPlayer2"), 0, Input.GetAxisRaw("VerticalPlayer2")).magnitude > 0)
+        {
+            Quaternion newDirection = Quaternion.LookRotation( move, Vector3.up) ;
+            transform.rotation = newDirection;
+        }
+
+        
     }
 
     void MoveAndRotateChar(Vector3 direction)
@@ -44,5 +90,14 @@ public class Move : MonoBehaviour
     void AnimTrigger()
     {
         FindObjectOfType<AudioManager>().Walk(trigger);
+    }
+
+    void SetDirections()
+    {
+        if (movement.magnitude > 0)
+        {
+            Quaternion newDirection = Quaternion.LookRotation(move, Vector3.up);
+            transform.rotation = newDirection;
+        }
     }
 }
