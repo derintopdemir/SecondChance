@@ -13,7 +13,6 @@ public class Bullet : MonoBehaviour
     }
     private void OnDisable()
     {
-        Debug.Log("Girdim amk");
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<Rigidbody>().Sleep();
     }
