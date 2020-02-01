@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Building", menuName = "CustomObjects/Buildings")]
+[CreateAssetMenu(fileName = "Bullets", menuName = "CustomObjects/Bullets", order = 3)]
 public class BulletObj : ScriptableObject
 {
     public int damage;
