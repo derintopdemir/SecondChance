@@ -8,6 +8,7 @@ public class Enemies : ScriptableObject
     public int speed;
     public int fireSpeed;
     public int damage;
+    public int health;
     
     public enum FireType { Melee, Ranged }
     public FireType fireType;
