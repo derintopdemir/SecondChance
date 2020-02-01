@@ -20,6 +20,7 @@ public class PickupItem : MonoBehaviour
             itemPickupLocation.GetChild(0).gameObject.GetComponent<Rigidbody>().useGravity = true;
             itemPickupLocation.GetChild(0).gameObject.GetComponent<BoxCollider>().enabled = true;
             itemPickupLocation.GetChild(0).transform.parent = null;
+            gameObject.GetComponent<Fire>().enabled = true;
         }
     }
 
@@ -66,6 +67,7 @@ public class PickupItem : MonoBehaviour
             other.gameObject.GetComponent<Rigidbody>().useGravity = false;
             other.gameObject.GetComponent<BoxCollider>().enabled = false;
             interactTextObj.SetActive(false);
+            gameObject.GetComponent<Fire>().enabled = false;
         }
         else if (other.CompareTag("FillPart") && Input.GetAxis("Interact1") > 0 && itemPickupLocation.childCount > 0 && other.GetComponent<PartInfo>().objId == itemPickupLocation.GetChild(0).GetComponent<PartInfo>().objId)
         {
@@ -73,6 +75,7 @@ public class PickupItem : MonoBehaviour
             Destroy(itemPickupLocation.GetChild(0).gameObject);
             interactTextObj.SetActive(false);
             other.gameObject.tag = "Untagged";
+            gameObject.GetComponent<Fire>().enabled = true;
         }
     }
 
