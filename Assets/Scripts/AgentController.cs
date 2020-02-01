@@ -31,6 +31,14 @@ public class AgentController : MonoBehaviour
         navMeshAgent.speed = enemyInfo.speed;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Player1") || collision.gameObject.CompareTag("Player2"))
+        {
+            FindObjectOfType<UıManager>().DecreaseHealth(1);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(((other.CompareTag("Player1") || other.CompareTag("Player2")) && (targetObj == null || other.CompareTag("Binalar")) || (other.CompareTag("Binalar") && targetObj == null)))
