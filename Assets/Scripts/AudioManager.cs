@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,8 +11,8 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         playCur = GetComponent<AudioSource>();
+        playCur.enabled = Convert.ToBoolean(PlayerPrefs.GetInt("Sound", 1));
     }
-
 
     public void Walk(bool trigger)
     {

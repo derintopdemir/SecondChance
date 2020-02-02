@@ -2013,7 +2013,7 @@ GameObject:
   - component: {fileID: 1199921621}
   - component: {fileID: 1199921622}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Pause Menu
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2411,6 +2411,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1315452329398460416, guid: ce008349243b9574a97e85c8b3836ba4,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1315452329398460416, guid: ce008349243b9574a97e85c8b3836ba4,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1315452329398460416, guid: ce008349243b9574a97e85c8b3836ba4,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1315452329398460416, guid: ce008349243b9574a97e85c8b3836ba4,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8730311821233397070, guid: ce008349243b9574a97e85c8b3836ba4,
         type: 3}
       propertyPath: m_textInfo.characterCount
