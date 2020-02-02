@@ -9,6 +9,8 @@ public class AgentController : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public Enemies enemyInfo;
 
+    [SerializeField] Animator animator;
+
     private int health;
     Vector3 target;
     GameObject targetObj;
@@ -31,15 +33,27 @@ public class AgentController : MonoBehaviour
         navMeshAgent.speed = enemyInfo.speed;
     }
 
+    public void ApplyZombieAnimation()
+    {
+        if (health < 0)
+        {
+            animator.SetBool("isDead", true);
+        }
+
+        
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player1"))
         {
             FindObjectOfType<UıManager>().DecreaseHealth(1, 1);
+            animator.SetBool("isAttack", true);
         }
         else if (collision.gameObject.CompareTag("Player2"))
         {
             FindObjectOfType<UıManager>().DecreaseHealth(1, 2);
+            animator.SetBool("isAttack4", true);
         }
     }
 
