@@ -15,6 +15,8 @@ public class GroundPlacementController : MonoBehaviour
     [SerializeField] public GameObject currentPlaceableObject;
     [SerializeField] public GameObject environmentParent;
     [SerializeField] private KeyCode newObjectHotKey = KeyCode.B;
+    [SerializeField] public KeyCode placeObjectKey = KeyCode.V;
+    [SerializeField] public KeyCode changeObject = KeyCode.C;
     [SerializeField] public Camera cam;
     [SerializeField] public Transform target;
     [SerializeField] public float minerals = 100f;
@@ -58,7 +60,7 @@ public class GroundPlacementController : MonoBehaviour
 
     public void ChangePlaceableObject()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(changeObject))
         {
             placeableObjectIndex++;
             if (placeableObjectIndex == placeables.Length)
@@ -130,7 +132,7 @@ public class GroundPlacementController : MonoBehaviour
 
     private void ReleaseIfClicked()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetKeyDown(placeObjectKey))
         {
             if (currentPlaceableObject == FindObjectOfType<CheckIsPlaceableForSquare>().gameObject)
             {
