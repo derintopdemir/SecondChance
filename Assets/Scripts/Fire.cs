@@ -19,11 +19,11 @@ public class Fire : MonoBehaviour
         if (this.gameObject.CompareTag("Player1"))
         {
             
-            if (Input.GetKeyDown(KeyCode.Space) && !spawned)
+            if (Input.GetKeyDown(KeyCode.Keypad0) && !spawned)
             {
                 GameObject bullet = Resources.Load("Bullet") as GameObject;
-                leanObj.Spawn(p1fire.position, Quaternion.identity);
-                bullet.transform.position = new Vector3(0, 10, 0);
+                leanObj.Spawn(p1fire.position, transform.rotation);
+                //bullet.transform.position = new Vector3(0, 10, 0);
                 leanObj.Despawn(bullet, 2f);
                 spawned = true;
                 FindObjectOfType<AudioManager>().Fire();
@@ -33,11 +33,11 @@ public class Fire : MonoBehaviour
         else if (this.gameObject.CompareTag("Player2"))
         {
             Transform parent = GameObject.FindGameObjectWithTag("Player2").transform;
-            if (Input.GetKeyDown(KeyCode.B) && !spawned)
+            if (Input.GetKeyDown(KeyCode.Space) && !spawned)
             {
                 GameObject bullet = Resources.Load("Bullet") as GameObject;
-                leanObj.Spawn(p1fire.position, Quaternion.identity);
-                bullet.transform.position = new Vector3(0,10,0);
+                leanObj.Spawn(p1fire.position, transform.rotation);
+                //bullet.transform.position = new Vector3(0,10,0);
                 leanObj.Despawn(bullet, 2f);
                 spawned = true;
                 FindObjectOfType<AudioManager>().Fire();

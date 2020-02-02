@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: -6119736309657322123}
   - component: {fileID: 8236625012637106218}
   - component: {fileID: 4618068315824901513}
+  - component: {fileID: -5224754827466963566}
   m_Layer: 0
   m_Name: Farm
   m_TagString: Obstacle
@@ -185,3 +186,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &-5224754827466963566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6817204976437086910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee1742332f440d4b8dbb017fdd8c839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingInfo: {fileID: 11400000, guid: 5fe68d5f567913a45b840994fa6885a1, type: 2}
+  health: 10

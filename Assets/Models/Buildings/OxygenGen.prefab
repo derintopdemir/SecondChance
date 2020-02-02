@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 1332080954007408142}
   - component: {fileID: -2636351214745357740}
   - component: {fileID: 7600601819077833463}
+  - component: {fileID: -7104881007248837132}
   m_Layer: 0
   m_Name: OxygenGen
   m_TagString: Obstacle
@@ -182,3 +183,17 @@ MonoBehaviour:
   isPlaceable: 0
   isPlaced: 0
   isTriggered: 0
+--- !u!114 &-7104881007248837132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5526425635391231737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee1742332f440d4b8dbb017fdd8c839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingInfo: {fileID: 11400000, guid: c395d11be2348414e802a0954045f619, type: 2}
+  health: 5

@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
         GetComponent<MeshFilter>().mesh = bulletInfo.mesh;
         GetComponent<Rigidbody>().WakeUp();
         GetComponent<Rigidbody>().isKinematic = false;
-        GetComponent<Rigidbody>().AddForce(Vector3.forward * 4000, ForceMode.Force);
+        GetComponent<Rigidbody>().AddForce(transform.forward * 4000, ForceMode.Force);
     }
     private void OnDisable()
     {
@@ -19,11 +19,12 @@ public class Bullet : MonoBehaviour
         GetComponent<Rigidbody>().Sleep();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<AgentController>().TakeDamage(bulletInfo.damage);
+            Lean.Pool.LeanPool.Despawn(this);
         }
     }
 }
