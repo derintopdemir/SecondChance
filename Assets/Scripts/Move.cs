@@ -174,7 +174,7 @@ public class Move : MonoBehaviour
 
     void AnimTrigger()
     {
-        FindObjectOfType<AudioManager>().Walk(trigger);
+
     }
 
     

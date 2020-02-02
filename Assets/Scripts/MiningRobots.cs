@@ -21,7 +21,7 @@ public class MiningRobots : MonoBehaviour
 
     private void Move(Vector3 pos)
     {
-        transform.DOLocalMove(pos, 2.5f).OnComplete(() => Move(currentPos)).SetEase(ease);
+        transform.DOMove(pos, 2.5f).OnComplete(() => Move(currentPos)).SetEase(ease);
         currentPos = currentPos == finalPos ? firstPos : finalPos;
     }
 
