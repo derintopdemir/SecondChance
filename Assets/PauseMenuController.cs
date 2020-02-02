@@ -17,8 +17,15 @@ public class PauseMenuController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (pauseMenu.activeSelf)
+            {
+                FindObjectOfType<UıManager>().Resume();
+            }
+            else
+            {
+                FindObjectOfType<UıManager>().Pause();
+            }
             pauseMenu.SetActive(!pauseMenu.activeSelf);
-            Time.timeScale = Time.timeScale == 0 ? 1 : 0;
         }
     }
 }

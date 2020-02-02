@@ -87,6 +87,7 @@ public class Move : MonoBehaviour
     {
         rb.MovePosition(transform.position + (direction * Time.fixedDeltaTime));
     }
+
     void AnimTrigger()
     {
         FindObjectOfType<AudioManager>().Walk(trigger);
