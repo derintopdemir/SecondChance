@@ -91,4 +91,9 @@ public class WaveController : MonoBehaviour
         currentWave += 1;
         waveTimerPanel.SetActive(false);
     }
+
+    public int GetCurrentWave()
+    {
+        return currentWave;
+    }
 }

@@ -13,17 +13,6 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public void Pause()
-    {
-        timeScaleOld = Time.timeScale;
-        Time.timeScale = 0;
-    }
-
-    public void Resume()
-    {
-        Time.timeScale = timeScaleOld;
-    }
-
     public void Exit()
     {
         Application.Quit();

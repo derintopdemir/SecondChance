@@ -171,6 +171,7 @@ public class Move : MonoBehaviour
         rb.MovePosition(transform.position + (direction * Time.fixedDeltaTime));
         //rb.MoveRotation(newRbDirection);
     }
+
     void AnimTrigger()
     {
         FindObjectOfType<AudioManager>().Walk(trigger);
