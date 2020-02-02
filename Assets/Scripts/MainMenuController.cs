@@ -10,16 +10,19 @@ public class MainMenuController : MonoBehaviour
 
     public void Play()
     {
+        FindObjectOfType<AudioManagerMenu>().Buton();
         SceneManager.LoadScene(1);
     }
 
     public void Exit()
     {
+        FindObjectOfType<AudioManagerMenu>().Buton();
         Application.Quit();
     }
 
     public void BackToMenu()
     {
+        FindObjectOfType<AudioManagerMenu>().Buton();
         SceneManager.LoadScene(0);
     }
 

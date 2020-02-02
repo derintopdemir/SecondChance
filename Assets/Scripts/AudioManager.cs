@@ -12,38 +12,29 @@ public class AudioManager : MonoBehaviour
     {
         playCur = GetComponent<AudioSource>();
         playCur.enabled = Convert.ToBoolean(PlayerPrefs.GetInt("Sound", 1));
+        StartCoroutine(GameStartSound());
     }
 
-    public void Walk(bool trigger)
+    IEnumerator GameStartSound()
     {
-        if (trigger)
-        {
-            playCur.clip = audios[0];
-            playCur.Play();
-            playCur.loop = true;
-        }
-        else if (!trigger)
-        {
-            playCur.clip = audios[0];
-            playCur.Stop();
-            playCur.loop = false;
-        }
+        playCur.clip = audios[0];
+        playCur.Play();
+        yield return new WaitForSeconds(playCur.clip.length);
+        playCur.clip = audios[1];
+        playCur.volume = 0.13f;
+        playCur.Play();
     }
     public void Fire()
     {
-        playCur.clip = audios[1];
+        playCur.clip = audios[2];
         playCur.Play();
     }
+
     public void Wave(int index)
     {
         int nextSound = 2;
         if (index >= 5) nextSound++;
         playCur.clip = audios[nextSound];
-        playCur.Play();
-    }
-    public void Buton(int index)
-    {
-        playCur.clip = audios[index];
         playCur.Play();
     }
 }

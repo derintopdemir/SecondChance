@@ -8,6 +8,7 @@ public class BGSoundScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        PlayerPrefs.SetInt("ses", 1);
         if (PlayerPrefs.GetInt("ses") == 0)
         {
             

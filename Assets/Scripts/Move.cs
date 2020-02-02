@@ -67,10 +67,10 @@ public class Move : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 trigger = true;
-                AnimTrigger();
+                //AnimTrigger();
             }
             else if(Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow)) { trigger = false;
-                AnimTrigger();
+                //AnimTrigger();
             }
         }
 
@@ -88,10 +88,10 @@ public class Move : MonoBehaviour
         rb.MovePosition(transform.position + (direction * Time.fixedDeltaTime));
     }
 
-    void AnimTrigger()
-    {
-        FindObjectOfType<AudioManager>().Walk(trigger);
-    }
+    //void AnimTrigger()
+    //{
+    //    FindObjectOfType<AudioManager>().Walk(trigger);
+    //}
 
     void SetDirections()
     {

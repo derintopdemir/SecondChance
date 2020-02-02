@@ -28,6 +28,7 @@ public class HealthBar : MonoBehaviour
         if(activeOnes.Count <= 0)
         {
             Time.timeScale = 0;
+            GameObject.Find("AudioManagerMob").GetComponent<AudioSource>().enabled = false;
         }
     }
     public void IncreaseHealth()
