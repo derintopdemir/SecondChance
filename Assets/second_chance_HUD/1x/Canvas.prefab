@@ -6710,6 +6710,7 @@ GameObject:
   - component: {fileID: 8730311822576225331}
   - component: {fileID: 8730311822576225335}
   - component: {fileID: 6998592083005196260}
+  - component: {fileID: 5674906124371926506}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6835,6 +6836,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 6137587068688612751}
+--- !u!114 &5674906124371926506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8730311822576225328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a1b623593f3b2459ca57ef39e707b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathMenu: {fileID: 3322905703118415717}
+  winPicture: {fileID: 2864818630035410412}
+  LosePicture: {fileID: 5794928557907321176}
 --- !u!1 &8730311822594942207
 GameObject:
   m_ObjectHideFlags: 0
@@ -7357,6 +7373,7 @@ GameObject:
   - component: {fileID: 1326793443135880754}
   - component: {fileID: 8807277000508002463}
   - component: {fileID: 195328086810918998}
+  - component: {fileID: 7158808068906071806}
   m_Layer: 5
   m_Name: WaveCount
   m_TagString: Untagged
@@ -7504,3 +7521,15 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7158808068906071806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9082387452576603465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c01ec2456f1ef46a8244face041903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
