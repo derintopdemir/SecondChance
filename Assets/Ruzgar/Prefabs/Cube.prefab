@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6319921631830703838}
   - component: {fileID: 2249628653588034016}
   - component: {fileID: 3636457212461598919}
-  - component: {fileID: 5945757085017587354}
   - component: {fileID: 4993635229495523636}
   - component: {fileID: -4617280120029242348}
+  - component: {fileID: -475218100434305060}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Obstacle
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dc3655bc354aad4d958311b877539fe, type: 2}
+  - {fileID: 2100000, guid: df3dc923be02a174dab453ac6907939a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,33 +111,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5945757085017587354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3922532164694507659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f1d9a2a5710ac4468377e2bae720f96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  surface: {fileID: 0}
-  previousTriggered: {fileID: 0}
-  materials:
-  - {fileID: 2100000, guid: 9dc3655bc354aad4d958311b877539fe, type: 2}
-  - {fileID: 2100000, guid: 0b37e29b3ac588e418f7c8f53a200733, type: 2}
-  - {fileID: 2100000, guid: 2e5cf738b0082dd4fafb63b52ca4afb1, type: 2}
-  m_Renderer: {fileID: 0}
-  groundCheck: {fileID: 6249344056830074348}
-  groundDistance: 0.5
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 256
-  isPlaceable: 0
-  isPlaced: 0
-  isTriggered: 0
 --- !u!208 &4993635229495523636
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -170,6 +143,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-475218100434305060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3922532164694507659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f1d9a2a5710ac4468377e2bae720f96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: 9dc3655bc354aad4d958311b877539fe, type: 2}
+  - {fileID: 2100000, guid: 0b37e29b3ac588e418f7c8f53a200733, type: 2}
+  - {fileID: 2100000, guid: df3dc923be02a174dab453ac6907939a, type: 2}
+  m_Renderer: {fileID: 0}
+  groundCheck: {fileID: 6249344056830074348}
+  groundDistance: 0.3
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 256
+  isPlaceable: 0
+  isPlaced: 0
+  isTriggered: 0
 --- !u!1 &4617243616323252168
 GameObject:
   m_ObjectHideFlags: 0

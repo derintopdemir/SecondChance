@@ -9,7 +9,7 @@ public class GroundPlacementController : MonoBehaviour
     //Choosing placeable object section ==>>
     int placeableObjectIndex = 0;
     [SerializeField] public GameObject[] placeables;
-    [SerializeField] TextMesh placeableObjectLabel;
+    //[SerializeField] TextMesh placeableObjectLabel;
     //objects
     [SerializeField] private GameObject placeableObjectPrefab;
     [SerializeField] public GameObject currentPlaceableObject;
@@ -28,7 +28,7 @@ public class GroundPlacementController : MonoBehaviour
     void Update()
     {
         ChangePlaceableObject();
-        UpdateLabel();
+        //UpdateLabel();
         HandleNewObjectHotKey();
 
         if (currentPlaceableObject != null && minerals > 5f)
@@ -45,10 +45,10 @@ public class GroundPlacementController : MonoBehaviour
         switch (placeableObjectIndex)
         {
             case 0:
-                placeableObjectLabel.text = "Cube";
+                //placeableObjectLabel.text = "Cube";
                 break;
             case 1:
-                placeableObjectLabel.text = "Sphere";
+                //placeableObjectLabel.text = "Sphere";
                 break;
             case 2:
                 Debug.Log("Index out of bound");
@@ -61,7 +61,7 @@ public class GroundPlacementController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             placeableObjectIndex++;
-            if (placeableObjectIndex == 2)
+            if (placeableObjectIndex == placeables.Length)
             {
                 placeableObjectIndex = 0;
             }
@@ -81,6 +81,8 @@ public class GroundPlacementController : MonoBehaviour
                 {
                     currentPlaceableObject = Instantiate(placeableObjectPrefab);
                     currentPlaceableObject.transform.SetParent(environmentParent.transform);
+
+
                 }
                 else
                 {
@@ -122,7 +124,7 @@ public class GroundPlacementController : MonoBehaviour
     private void RotateFromMouseWheel()
     {
         mouseWheelYRotation += Input.mouseScrollDelta.y;
-        currentPlaceableObject.transform.rotation = Quaternion.Euler(0f, mouseWheelYRotation * 10f, 0f);
+        currentPlaceableObject.transform.rotation = Quaternion.Euler(-90f, mouseWheelYRotation * 10f, currentPlaceableObject.transform.rotation.z);
         //currentPlaceableObject.transform.position = new Vector3(currentPlaceableObject.transform.position.x, mouseWheelYRotation, currentPlaceableObject.transform.position.z);
     }
 

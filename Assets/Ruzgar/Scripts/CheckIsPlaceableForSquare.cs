@@ -5,12 +5,11 @@ using UnityEngine.AI;
 
 public class CheckIsPlaceableForSquare : MonoBehaviour
 {
-    [SerializeField] NavMeshSurface surface;
-
-    [SerializeField] GameObject previousTriggered;
 
     public Material[] materials;
     public MeshRenderer m_Renderer;
+
+    [SerializeField] Material[] savedMaterials;
 
     [SerializeField] private Transform groundCheck;
     public float groundDistance = 0.3f;
@@ -22,9 +21,10 @@ public class CheckIsPlaceableForSquare : MonoBehaviour
 
     private void Start()
     {
-        surface = FindObjectOfType<NavMeshSurface>();
         m_Renderer = GetComponent<MeshRenderer>();
         groundCheck = GameObject.Find("GroundCheck").transform;
+
+        savedMaterials = m_Renderer.materials;
     }
 
     private void Update()
@@ -35,7 +35,7 @@ public class CheckIsPlaceableForSquare : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Obstacle"))
+        if (other.tag == gameObject.tag)
         {
             isTriggered = true;
         }
@@ -43,7 +43,7 @@ public class CheckIsPlaceableForSquare : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Obstacle"))
+        if (other.tag == gameObject.tag)
         {
             isTriggered = false;
         }
@@ -55,7 +55,14 @@ public class CheckIsPlaceableForSquare : MonoBehaviour
         if (isTriggered)
         {
             isPlaceable = false;
-            m_Renderer.material = materials[1];
+            //m_Renderer.material = materials[1];
+
+            Material[] redLows = new Material[m_Renderer.materials.Length];
+            for (int i = 0; i < m_Renderer.materials.Length; i++)
+            {
+                redLows[i] = materials[1];
+            }
+            m_Renderer.materials = redLows;
         }
 
         if (!isTriggered)
@@ -65,10 +72,16 @@ public class CheckIsPlaceableForSquare : MonoBehaviour
             if (isPlaceable)
             {
                 CheckIsPlaced();
+                
             }
             else if (!isPlaceable)
             {
-                m_Renderer.material = materials[1];
+                Material[] redLows = new Material[m_Renderer.materials.Length];
+                for (int i = 0; i < m_Renderer.materials.Length; i++)
+                {
+                    redLows[i] = materials[1];
+                }
+                m_Renderer.materials = redLows;
             }
         }
     }
@@ -77,11 +90,18 @@ public class CheckIsPlaceableForSquare : MonoBehaviour
     {
         if (isPlaced)
         {
-            m_Renderer.material = materials[2];
+            //m_Renderer.material = materials[2];
+            m_Renderer.materials = savedMaterials;
+
         }
         else
         {
-            m_Renderer.material = materials[0];
+            Material[] greenlows = new Material[m_Renderer.materials.Length];
+            for (int i = 0; i < m_Renderer.materials.Length; i++)
+            {
+                greenlows[i] = materials[0];
+            }
+            m_Renderer.materials = greenlows;
         }
     }
 
