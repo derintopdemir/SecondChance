@@ -27,7 +27,7 @@ public class Fire : MonoBehaviour
                 leanObj.Despawn(bullet, 2f);
                 spawned = true;
                 FindObjectOfType<AudioManager>().Fire();
-                triggerDelay = .45f;
+                triggerDelay = 1;
             }
         }
         else if (this.gameObject.CompareTag("Player2"))
@@ -41,7 +41,7 @@ public class Fire : MonoBehaviour
                 leanObj.Despawn(bullet, 2f);
                 spawned = true;
                 FindObjectOfType<AudioManager>().Fire();
-                triggerDelay = .45f;
+                triggerDelay = 1;
             }
         }
         Reset();
