@@ -82,7 +82,7 @@ public class GroundPlacementController : MonoBehaviour
                     currentPlaceableObject = Instantiate(placeableObjectPrefab);
                     currentPlaceableObject.transform.SetParent(environmentParent.transform);
 
-                    
+
                 }
                 else
                 {
