@@ -103,7 +103,7 @@ public class GroundPlacementController : MonoBehaviour
 
     public Vector3 GetCurrenObjectGridPos()
     {
-        Vector3 gridPos = new Vector3(Mathf.RoundToInt(currentPlaceableObject.transform.position.x / 4f) * 4f, Mathf.RoundToInt(currentPlaceableObject.transform.position.y / 2f) * 2f, Mathf.RoundToInt(currentPlaceableObject.transform.position.z / 4f) * 4f);
+        Vector3 gridPos = new Vector3(Mathf.RoundToInt(currentPlaceableObject.transform.position.x / 2f) * 2f, Mathf.RoundToInt(currentPlaceableObject.transform.position.y / 2f) * 2f, Mathf.RoundToInt(currentPlaceableObject.transform.position.z / 2f) * 2f);
         return gridPos;
     }
 

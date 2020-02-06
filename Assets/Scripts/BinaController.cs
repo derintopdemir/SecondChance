@@ -14,7 +14,6 @@ public class BinaController : MonoBehaviour
     {
         StartCoroutine(UpdateResources());
         health = buildingInfo.buildingHealth;
-        GetComponent<MeshFilter>().mesh = buildingInfo.mesh;
     }
 
     // Update is called once per frame

@@ -7,6 +7,8 @@ public class HealthBar : MonoBehaviour
 {
     public Sprite emptyBar, greenBar, orangeBar, redBar, yellowBar;
     public Stack<Image> activeOnes = new Stack<Image>(), deactiveOnes = new Stack<Image>();
+    public bool isHealth = true;
+    public int player;
     Image bok;
 
     private void Awake()
@@ -19,15 +21,31 @@ public class HealthBar : MonoBehaviour
 
     public void DecreaseHealth()
     {
+        if(activeOnes.Count <= 0 && !isHealth)
+        {
+            if(!FindObjectOfType<ResourceManager>().CheckResource(ResourceManager.Type.Food, 5))
+            {
+                FindObjectOfType<UıManager>().DecreaseHealth(1, player);
+            }
+            else
+            {
+                while(deactiveOnes.Count > 0)
+                {
+                    IncreaseHealth();
+                }
+            }
+            return;
+        }
+
         bok = activeOnes.Pop();
 
         bok.sprite = emptyBar;
 
         deactiveOnes.Push(bok);
 
-        if(activeOnes.Count <= 0)
+        if(activeOnes.Count <= 0 && isHealth)
         {
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
             GameObject.Find("AudioManagerMob").GetComponent<AudioSource>().enabled = false;
         }
     }
